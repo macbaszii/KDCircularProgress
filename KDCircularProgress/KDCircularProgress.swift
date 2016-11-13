@@ -68,13 +68,13 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
         }
     }
     
-    private var progressLayer: KDCircularProgressViewLayer {
+    public var progressLayer: KDCircularProgressViewLayer {
         get {
             return layer as! KDCircularProgressViewLayer
         }
     }
     
-    private var radius: CGFloat = 0 {
+    public var radius: CGFloat = 0 {
         didSet {
             progressLayer.radius = radius
         }
@@ -333,7 +333,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
         progressLayer.setNeedsDisplay()
     }
     
-    private class KDCircularProgressViewLayer: CALayer {
+    public class KDCircularProgressViewLayer: CALayer {
         @NSManaged var angle: Double
         var radius: CGFloat = 0 {
             didSet {
@@ -385,7 +385,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
             }
         }
         
-        override class func needsDisplay(forKey key: String) -> Bool {
+        override public class func needsDisplay(forKey key: String) -> Bool {
             return key == "angle" ? true : super.needsDisplay(forKey: key)
         }
         
@@ -412,11 +412,11 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
             super.init()
         }
         
-        required init?(coder aDecoder: NSCoder) {
+        required public init?(coder aDecoder: NSCoder) {
             super.init(coder: aDecoder)
         }
         
-        override func draw(in ctx: CGContext) {
+        override public func draw(in ctx: CGContext) {
             UIGraphicsPushContext(ctx)
             
             let size = bounds.size
